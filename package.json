@@ -1,0 +1,27 @@
+{
+  "name": "principled-app",
+  "version": "1.0.0",
+  "description": "An app to remember the important things",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bryanwoodard/Principled-App.git"
+  },
+  "author": "Bryan Woodard",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bryanwoodard/Principled-App/issues"
+  },
+  "homepage": "https://github.com/bryanwoodard/Principled-App#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.4",
+    "mongodb": "^3.1.8",
+    "nodemon": "^1.18.5",
+    "pug": "^2.0.3"
+  }
+}
