@@ -2,6 +2,8 @@
 
 const express = require('express');
 const router = express.Router();
+debugger;
+const handler = require('../handlers/handle');
 
 //Twilio Integration:
 const accountSid = 'AC0246cd63f7df56173a3ee27f965d562b';
@@ -14,18 +16,25 @@ router.get('/', (req, res) => {
     var num = req.query.num;
     var msg = req.query.msg;
 
+    var spit = function(arg) {
+        console.log(`Patoooie, I spit on your grave ${arg}`);
+    }
+
     console.log(num + " : " + msg);
 
-    client.messages
-        .create({
-            body: msg,
-            from: '+18587369481', // twilio number
-            to: '+19195222647'
-        })
-        .then(message => console.log(message.sid))
-        .done();
+    // client.messages
+    //     .create({
+    //         body: msg,
+    //         from: '+18587369481', // twilio number
+    //         to: '+16193003379'
+    //     })
+    //     .then(message => console.log(message.sid))
+    //     .done();
     //}
-    return res.send("its done");
+    res.send("its done");
+    var time = setTimeout(spit, 10000, 'ricky!');
+    return time();
+
 });
 
 router.get('/hello', (req, res) => {
@@ -35,6 +44,7 @@ router.get('/hello', (req, res) => {
     // } else {
     //     res.render('hello');
     // }
+
 });
 
 router.post('/hello', (req, res) => {
