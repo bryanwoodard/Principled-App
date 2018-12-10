@@ -2,26 +2,63 @@
 
 const express = require('express');
 const router = express.Router();
-debugger;
 const handler = require('../handlers/handle');
 
-//Twilio Integration:
-const accountSid = 'AC0246cd63f7df56173a3ee27f965d562b';
-const authToken = '08b87d2a011517bcd9c6eb98744883cc';
-const client = require('twilio')(accountSid, authToken);
+//Track Schema
+var Track = require('../models/track');
 
-router.get('/', (req, res) => {
-    debugger;
-    //if (req.query) {
-    var num = req.query.num;
-    var msg = req.query.msg;
+//Principle Schema 
+var Principle = require('../models/principle');
 
-    var spit = function(arg) {
-        console.log(`Patoooie, I spit on your grave ${arg}`);
-    }
 
-    console.log(num + " : " + msg);
+////////////////////////////Routes/////////////////////////////////
 
+//Home Page
+router.get('/', (req, res, next) => {
+    return res.render("home");
+});
+
+// Tracks page - displays all the tracks from db
+router.get('/tracks', (req, res) => {
+    //check cookie if signed in
+        // if not return to homepage
+    //Get tracks and principles from db (will i need to add db vars in this one file too?)
+    //Store in an object
+    //Pass object into the render function   
+    return res.render('tracks');
+});
+
+//Add a new track to the db.  
+//Data will be sent from ajax on the page and will also give confirmation success response
+router.post('/addtrack', (req, res) => {
+    // recieve object from post
+    // add it to db
+    // Track.create()
+});
+
+
+//Add a new principle to the db.  
+//Data will be sent from ajax on the page and will also give confirmation success response
+router.post('/addprinciple', (req, res) => {
+    // recieve object from post
+    // add it to db;
+    //Principle.create()
+});
+
+
+
+//Actually start the track and send the messages.  Will be triggered by the form on page. 
+//Data will be sent from ajax on the page and will also give confirmation success response
+router.post('/startTrack', (req, res) => {
+    // res.clearCookie('username');
+    // res.redirect('/hello');
+    // Twilio Functionality below + plus interval fix
+    //Twilio Integration:
+    const accountSid = 'AC0246cd63f7df56173a3ee27f965d562b';
+    const authToken = '08b87d2a011517bcd9c6eb98744883cc';
+    const client = require('twilio')(accountSid, authToken);
+
+    // Twilio Function to send messages:
     // client.messages
     //     .create({
     //         body: msg,
@@ -30,31 +67,33 @@ router.get('/', (req, res) => {
     //     })
     //     .then(message => console.log(message.sid))
     //     .done();
-    //}
-    res.send("its done");
-    var time = setTimeout(spit, 10000, 'ricky!');
-    return time();
-
 });
 
-router.get('/hello', (req, res) => {
-    // const name = req.cookies.username;
-    // if (name) {
-    //     res.redirect('/');
-    // } else {
-    //     res.render('hello');
-    // }
-
+//Signup
+router.post('/signup', (req, res) => {
+    //Take value from form
+    // check if everything is there
+    // insert into db
+    //redirect to '/confirmation';
+    //User.create()
 });
 
-router.post('/hello', (req, res) => {
-    // res.cookie('username', req.body.username);
-    // res.redirect('/');
+//Signin
+router.get('/signin', (req, res) => {
+    // recieve object from post
+    // check if it is valid
+    // if so then redirect to '/tracks'
+    return res.redirect('/tracks');
+    
 });
 
+//Function to Log out 
 router.post('/goodbye', (req, res) => {
-    // res.clearCookie('username');
-    // res.redirect('/hello');
+    res.clearCookie('username');
+    res.redirect('/home');
 });
+
+
+
 
 module.exports = router;

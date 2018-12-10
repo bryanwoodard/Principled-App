@@ -6,7 +6,7 @@ var app = express();
 var cookieParser = require('cookie-parser')
 
 //mongodb connection
-mongoose.connect('mongodb://localhost:27017/principles');
+mongoose.connect('mongodb://localhost:27017/principled');
 var db = mongoose.connection;
 
 //mongo error
@@ -23,17 +23,11 @@ app.use(cookieParser());
 app.use('/static', express.static('public'));
 
 //Set view engine
-app.set("views engine", 'pug');
+app.set("view engine", 'pug');
+app.set('views', __dirname + '/views');
 
 //Route handler
 const routes = require('./routes/index');
-
-//debugger;
-
-//test reoute -> no 
-// app.get("/", (req, res) => {
-//     res.send("You did it!")
-// })
 
 //Route Handler
 app.use("/", routes);
@@ -49,7 +43,7 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
     res.locals.error = err;
     res.status(err.status);
-    return res.send('error');
+    //return res.send('error');
 });
 
 
