@@ -1,0 +1,13 @@
+#main p{
+	padding: 2em 4em 2em 4em;
+}
+
+.center{
+	margin: auto;
+	width:40%;
+}
+
+input {
+	margin: auto;
+	width:50%;
+}
