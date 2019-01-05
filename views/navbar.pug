@@ -1,12 +1,15 @@
+- var signin = {status: false}
+
 nav
         button(href='') LOGO
         |  |
-        a(href='') Home
+        a(href='/') Home
         |  |
-        a(href='') Tracks
+        a(href='/tracks') Tracks
         |  |
-        a(href='') Principles
+        a(href='/account') Account
         |  |
-        a(href='') Account
-        |  |
-        a(href='') Signin/Login
+        if  (signin.status)
+                a(href='/goodbye') Sign Out
+        else
+                a(href='/') Sign Up / Log In

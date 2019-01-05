@@ -15,6 +15,7 @@ var Principle = require('../models/principle');
 
 //Home Page
 router.get('/', (req, res, next) => {
+    console.log("this is the /home page!") 
     return res.render("home");
 });
 
@@ -24,8 +25,16 @@ router.get('/tracks', (req, res) => {
         // if not return to homepage
     //Get tracks and principles from db (will i need to add db vars in this one file too?)
     //Store in an object
-    //Pass object into the render function   
+    //Pass object into the render function \
+    console.log("this is the /tracks page!") ; 
     return res.render('tracks');
+});
+
+//Account Page
+router.get('/account', (req, res) => {
+    console.log("this is the /account page!")
+    return res.render('account');
+    
 });
 
 //Add a new track to the db.  
@@ -45,6 +54,11 @@ router.post('/addprinciple', (req, res) => {
     //Principle.create()
 });
 
+//View All principles for a specific track based on query param
+router.post('/viewprinciples', (req, res) => {
+    // look at query param
+    // display all of them on another page
+});
 
 
 //Actually start the track and send the messages.  Will be triggered by the form on page. 
@@ -87,8 +101,9 @@ router.get('/signin', (req, res) => {
     
 });
 
+
 //Function to Log out 
-router.post('/goodbye', (req, res) => {
+router.get('/goodbye', (req, res) => {
     res.clearCookie('username');
     res.redirect('/home');
 });

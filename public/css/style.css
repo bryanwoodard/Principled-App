@@ -1,13 +1,13 @@
-#main p{
+#main input p{
 	padding: 2em 4em 2em 4em;
 }
 
-.center{
+.center .contentText input{
 	margin: auto;
 	width:40%;
 }
 
-input {
-	margin: auto;
-	width:50%;
-}
+/*input {
+*//*	margin: auto;
+width:50%;
+/*}*/

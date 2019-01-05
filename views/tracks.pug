@@ -1,14 +1,60 @@
 extends layout
 
 block content
-	h2 Hi **NAME**! What is important to you?  Add your tracks below!
+	h2 **NAME**! What is important to you?  Add your tracks below!
 
-	P
-		h2 My Tracks:
+	h2#header My Tracks: ** Wrap below in check and iterate based on db query results
+	//Iterate below based on retrieved query
 
-		// Render a list of tracks from the object passed into the render function
-		h3 Sample Track Title
-		h4 Description: This is an example track description that will contain all the things about this track
+	div#track-1
+		h4#track-titles Sample Track Title #1
+		p#description Description: This is an example track description that will contain all the things about this track
+		ul#principle-list
+			li.principles First principle
+			li.principles Yet another principle
+			li.principles What, a thrid bihhh?
+			li.view-more 
+				a(href="") View more...
+		div.principle-nav
+			input.view-principle(type="button" value="View All")
+			input.view-principle(type="button" value="Add Principles")
+			input.view-principle(type="button" value="Delete")
+			p 
+				| Active:  
+				input.view-principle(type="checkbox" value="active" name="active")
 
-	h3 Add Tracks:
-	button ADD
+	div#track-2
+		h4#track-titles Sample Track Title #2
+		p#description Description: This area will show for all of the tracks that they have and be displayed programmatically for all the records in the db
+		ul#principle-list
+			li.principles Principle 1 something
+			li.principles Another principle
+			li.principles Yet another principle
+			li.view-more 
+				a(href="") View more...
+		div.principle-nav
+			input.view-principle(type="button" value="View All")
+			input.view-principle(type="button" value="Add Principles")
+			input.view-principle(type="button" value="Delete")
+			p 
+				| Active:  
+				input.view-principle(type="checkbox" value="active" name="active")
+
+	h3#add-tracks Add Tracks:
+		br
+		input(
+		type='text'
+		name='title'
+		value="Title"
+		)
+		br
+		input(type='text' name='principle' value="Principle")
+		br
+		input(
+		type='button'
+		name='signup'
+		value="Sign Up"
+		)
+
+
+

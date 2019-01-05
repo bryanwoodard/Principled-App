@@ -1,0 +1,33 @@
+extends layout
+
+block content
+	h2 Account Details:
+	ul.details
+		li Name: Bryan(whatever is set in cookie.  Provided to template)
+		li Email: emaddress@memail.com (whatever is set in cookie.  Provided to template)
+		li Phone Number: 6193003388 (whatever is set in cookie.  Provided to template)
+		li Frequency: 
+			select
+				option Once Daily
+				option Twice Daily
+				option Once Weekly
+				option Twice Weekly
+	div.account-interact
+		input#account-edit(type="button" value="Edit")
+		input#account-passchange(type="button" value="Change Password")
+		input#account-logout(type="button" value="Logout")
+
+	div#change-pass
+		form(action="/")
+			| Old Password:
+			input(type="text" name="oldpass")
+			br
+			| New Password:
+			input(type="text" name="newpass")
+			br
+			| Confirm Password:
+			input(type="text" name="confirmpass")
+			br
+			input(type="submit" value="Submit")
+
+
